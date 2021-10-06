@@ -1,0 +1,57 @@
+
+
+    <div class="sidebar">
+      <div class="sidebar-wrapper">
+        
+        <div class="logo">
+          <img src="/static/assets/img/home.png">
+          <a target="_blank" href="" class="simple-text logo-normal">Credit Dashboard</a>
+     </div>
+          
+        
+
+        <ul class="nav">
+        {% if request.user.is_authenticated %}
+          
+         
+        <li class="{% if 'page-user' in segment %} active {% endif %}">
+          <a href="/index.html">
+            <i class="tim-icons icon-bank"></i>
+            <p>Home</p>
+          </a>
+        </li>
+          <li class="{% if 'page-user' in segment %} active {% endif %}">
+            <a href="/form.html">
+              <i class="tim-icons icon-bullet-list-67"></i>
+              <p>Form</p>
+            </a>
+          </li>
+
+
+          <li class="{% if 'page-user' in segment %} active {% endif %}">
+            <a href="/page-user.html">
+              <i class="tim-icons icon-single-02"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          
+          <li class="{% if 'typography' in segment %} active {% endif %}">
+            <a href="{% url 'upload' %}">
+              <i class="tim-icons icon-attach-87"></i>
+              <p>Pdf</p>
+            </a>
+          </li>
+          
+          <li>
+            <a href="{% url 'logout' %}" >
+              <i class="tim-icons icon-user-run"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+            
+          {% endif %}
+                    
+        </ul>
+        
+      </div>
+    </div>

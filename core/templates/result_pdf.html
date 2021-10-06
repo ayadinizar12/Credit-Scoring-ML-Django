@@ -1,0 +1,362 @@
+
+         
+          
+          {% extends 'layouts/base.html' %}
+
+          {% block title %} Result {% endblock %} 
+          
+          <!-- Specific Page CSS goes HERE  -->
+          {% block stylesheets %}{% endblock stylesheets %}
+          
+          {% block content %}
+          
+          <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+          
+          <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+      
+          
+
+
+
+
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="card">
+                      <div class="card-header">
+                        <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> Result</h3>
+                      </div>
+                      <div class="card-body">
+                        
+                        
+                        <div class="alert alert-info alert-with-icon" data-notify="container">
+                          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                          <span data-notify="icon" class="tim-icons icon-bell-55"></span>
+                          <span data-notify="message">{{approval}}.</span>
+                        </div>
+                        <div class="alert alert-info alert-with-icon" data-notify="container">
+                          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                          <span data-notify="icon" class="tim-icons icon-bell-55"></span>
+                          <span data-notify="message"> Your Score is  {{scoring}}</span>
+                        </div>
+                        
+
+                      
+                        <button class="btn btn-fill btn-primary"  onclick="showNotification('top','center',{{score}})">Result</button>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> Advices</h3>
+                    </div>
+                    <div class="card-body">
+
+                      {% if  RAF1 < 0.2 %}
+                      <div class="alert alert-primary">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                       <span><b>Financial autonomy ratio 1 under 0.2 you need to optimize the Equity value </b></span>
+                      
+                      </div>
+                      {% endif %}
+
+
+
+
+                      {% if  RAF2 < 1 %}
+                      <div class="alert alert-info"></div>
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        <span><b>Financial autonomy ratio 2 under 1 you need to optimize the Equity value</b></span>
+                        
+                      </div>
+                      {% endif %}
+
+
+                      {% if  RFD < 1 %}
+                      <div class="alert alert-success">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                       <span><b>Debt ratio under 1 you need to optimize the Total of Current and Non-Current Liabilities values</b></span>
+                     </div>
+                      {% endif %}
+
+
+
+                      {% if  RLG < 1 %}
+                      <div class="alert alert-warning">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        <span><b>Current ratio under 1 you need to optimize the Total of Current Assets values</b></span>
+                      
+                      </div>
+                      {% endif %}
+
+
+
+                      {% if  RLR < 1 %}
+                      <div class="alert alert-danger">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        <span><b>Quick Ratio under 1 you need to optimize the Accounts Payable and Liquidity values</b></span>
+                        
+                       </div>
+                       {% endif %}
+
+
+                       {% if  RFI < 1 %}
+                       <div class="alert alert-info">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        <span><b>Investment financing Ratio under 1 you  need to optimize the Equity and  Total of  Non-Current Liabilities values</b></span>
+                        
+                       
+                      </div> 
+                      {% endif %}
+  
+  
+
+
+                      {% if  DPC > 30 %}
+                      <div class="alert alert-danger">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        <span><b>Days sales outstanding Ratio over 30 you need to optimize the Total Operating Income value</b></span>
+                         </div>
+                      {% endif %}
+              
+  
+  
+                 </div>
+                  </div>
+                </div>
+              </div>
+
+            
+              
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card ">
+                    <div class="card-header">
+                      <h4 class="card-title"> Data Table</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table tablesorter " id="">
+                          <thead class=" text-primary">
+                            <tr>
+                              <th>
+                                Working capital
+                              </th>
+                              <th>
+                                Current assets
+                              </th>
+                              <th>
+                                Non-current assets
+                              </th>
+                              <th>
+                                Current liabilities
+                              </th>
+                              <th>
+                                Non-current liabilities
+                              </th>
+                              <th>
+                                Accounts payable
+                              </th>
+                              <th>
+                                operating income
+                              </th>
+                              <th>
+                                Net profit
+                              </th>
+                              <th>
+                                Liquidity
+                              </th>
+                              <th class="text-center">
+                                Total assets
+                              </th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                {{capitaux_propres}}
+                              </td>
+                              <td>
+                                {{total_des_actifs_courant}}
+                              </td>
+                              <td>
+                                {{total_des_actifs_non_courant}}
+                              </td>
+
+                              <td>
+                                {{total_des_passifs_courants}}
+                              </td>
+                              <td>
+                                {{total_des_passifs_non_courants}}
+                              </td>
+                              <td>
+                                {{fournisseurs_et_comptes_rattachés}}
+                              </td>
+
+
+                              <td>
+                                {{total_des_produits_exploitation}}
+                              </td>
+                              <td>
+                                {{résultat_net}}
+                              </td>
+                              <td>
+                                {{liquidités}}
+                              </td>
+                              <td class="text-center">
+                                {{total_des_actifs}}
+                              </td>
+
+
+                            </tr>
+                           
+                           
+                            
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+          
+            <canvas id="chart" style="height: 80px; width: 180px;"></canvas>
+
+
+
+
+
+
+
+
+              {% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+  let ctx = document.getElementById("chart").getContext("2d");
+    
+    let chart = new Chart(ctx, {
+      type: "bar",
+      data: {
+         labels : ['RAF1', 'RAF2', 'RFD', 'RLG','RFI', 'DPC', 'RCP', 'TRN'],
+
+         datasets: [
+            {
+              label: "Current Ratios",
+              backgroundColor: "#226DA2",                         
+              borderColor: "#417690",
+              data: {{lis}}
+            },
+
+            {
+              label: "Optimal Ratios",
+              backgroundColor: "#FF33DD",
+              borderColor: "orange",
+              borderWidth: 1,
+              data: [0.2,1,1,1,1,30,0,0]
+            }
+
+
+
+
+
+
+         ]
+      },
+      options: {
+         title: {
+            text: "Ratios",
+            display: true,
+            scales: {
+                yAxes: [
+                            // {barPercentage: 1},
+                            // {gridLines:{drawBorder: false}},
+                            {ticks: {min: 0, max: 20, stepSize: 1}},
+                            // {ticks: {mirror: true}},
+                            {display: false},
+                            
+                            ]
+         }
+      }}
+    });
+  function showNotification (from, align, message) {
+   color = Math.floor((Math.random() * 4) + 1);
+
+    $.notify({
+      icon: "tim-icons icon-bell-55",
+      message: message
+
+    }, {
+      type: type[color],
+      timer: 8000,
+      placement: {
+        from: from,
+        align: align
+      }
+    });
+  }
+
+
+
+
+
+
+</script>
+
+{% endblock javascripts %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

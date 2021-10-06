@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} UI Typography {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<style>
+
+</style>
+
+{% endblock stylesheets %}
+
+
+{% block content %}
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <center>
+      <div class="card-body">
+        <h2>Pdf Analysis</h2>
+        <form method = 'POST' enctype="multipart/form-data" action = "{% url 'result_pdf' %}" >
+
+          {% csrf_token %}
+          <div class="file-input">
+            
+            <input type ="file" name ="document" >
+            <button class="btn btn-fill btn-primary" type ="submit">Upload PDF</button>
+          
+          </div>
+
+        </form>
+      </div>
+    </center>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

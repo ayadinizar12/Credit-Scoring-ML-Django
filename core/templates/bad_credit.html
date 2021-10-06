@@ -1,0 +1,80 @@
+{% extends 'layouts/base.html' %}
+{% include 'result.html' %}
+
+{% block title %}  {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Notifications Style</h4>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-info">
+          <span>This is a plain notification</span>
+        </div>
+        <div class="alert alert-info">
+          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="tim-icons icon-simple-remove"></i>
+          </button>
+          <span>This is a notification with close button.</span>
+        </div>
+        <div class="alert alert-info alert-with-icon" data-notify="container">
+          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="tim-icons icon-simple-remove"></i>
+          </button>
+          <span data-notify="icon" class="tim-icons icon-bell-55"></span>
+          <span data-notify="message">This is a notification with close button and icon.</span>
+        </div>
+        <div class="alert alert-info alert-with-icon" data-notify="container">
+          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="tim-icons icon-simple-remove"></i>
+          </button>
+          <span data-notify="icon" class="tim-icons icon-bell-55"></span>
+          <span data-notify="message">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+<div class="col-md-4">
+    <div class="card card-user">
+      <div class="card-body">
+        <p class="card-text">
+          <div class="author">
+            <div class="block block-one"></div>
+            <div class="block block-two"></div>
+            <div class="block block-three"></div>
+            <div class="block block-four"></div>
+            <a href="javascript:void(0)">
+              <img class="avatar" src="/static/assets/img/p.png" alt="...">
+              <h5 class="title">hi {{score}}
+              </h5>
+            </a>
+            <p class="description">
+              {{ request.user.email }}
+            </p>
+          </div>
+        </p>
+        
+      </div>
+     
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
