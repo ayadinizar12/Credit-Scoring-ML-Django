@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 from django.forms.utils import ErrorList
 from django.http import HttpResponse
 from .forms import LoginForm, SignUpForm
-import speech_recognition as sr
 import webbrowser as web
 
 

@@ -33,7 +33,7 @@
                             <i class="tim-icons icon-simple-remove"></i>
                           </button>
                           <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-                          <span data-notify="message">{{approval}}.</span>
+                          <span data-notify="message">{{default_val}}.</span>
                         </div>
                         <div class="alert alert-info alert-with-icon" data-notify="container">
                           <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
@@ -42,11 +42,16 @@
                           <span data-notify="icon" class="tim-icons icon-bell-55"></span>
                           <span data-notify="message"> Your Score is  {{scoring}}</span>
                         </div>
-                        <button class="btn btn-fill btn-primary"  onclick="showNotification('top','center',{{score}})">Result</button>
 
                       </div>
                     </div>
                   </div>
+                </div>
+
+
+</script>
+
+{% endblock content %}
 
 
 
@@ -56,11 +61,7 @@
 
 
 
-
-
-
-
-                <div class="col-md-6">
+                {% comment %} <div class="col-md-6">
                   <div class="card">
                     <div class="card-header">
                       <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> Advices</h3>
@@ -354,6 +355,14 @@
 
 </script>
 
-              {% endblock content %}
+              {% endblock content %} {% endcomment %}
 
 <!-- Specific Page JS goes HERE  -->
+
+
+
+
+
+
+
+

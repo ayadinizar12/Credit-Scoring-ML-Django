@@ -1,8 +1,10 @@
 
 
 from django.urls import path, re_path
-from app import views
+
 from . import views_dash
+from . import views
+
 
 from django.contrib import admin
 from django.conf import settings
@@ -20,7 +22,7 @@ urlpatterns = [
     path('result_pdf/',views.result_pdf,name = 'result_pdf'),
 
     
-    # Matches any html file
+    #Matches any html file
     re_path(r'^.*\.*', views.pages, name='pages'),
     
 

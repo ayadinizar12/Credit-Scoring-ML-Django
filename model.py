@@ -1,14 +1,14 @@
 import pandas as pd
 import numpy as np
 import sklearn
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 
 
 import warnings
 warnings.filterwarnings('ignore')
 
-df=pd.read_excel('final_data.xlsx')
+df=pd.read_csv('final_data.xlsx')
 
 #df.drop('Unnamed: 0',axis=1,inplace=True)
 

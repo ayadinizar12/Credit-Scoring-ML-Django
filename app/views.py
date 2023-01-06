@@ -46,7 +46,7 @@ def upload (request):
     return render(request, 'ui-typography.html')
 
 def result_pdf (request):
-    ET_Model = joblib.load('final_model_br.sav')
+    ET_Model = joblib.load('final_model.sav')
     if(request.method == 'POST'):
         uploaded_file = request.FILES['document']
         
@@ -116,14 +116,14 @@ def result_pdf (request):
             
         
         if scoring < 1.81 : 
-            score = 'Your score is ', float(scoring) ,'the company might be headed for bankruptcy , the request  is denied'
+            score = 'Your score is ', float(scoring) ,'lentreprise pourrait se diriger vers la faillite, la demande est refusee'
         
         elif  1.81 <= scoring < 2.99:  
-            score = 'Your score is', float(scoring) ,'the risk is present without being very important, the request  is accepted'
+            score = 'Your score is', float(scoring) ,'le risque est présent sans être très important, la demande est acceptee'
             
         else : 
 
-            score = "Your score is :", str(scoring) , "the company is in solid financial positioning , the request  is accepted"
+            score = "Your score is :", str(scoring) , "le risque est présent sans être très important, la demande est acceptée"
 
     data_dict['approval'] = rep
     data_dict['score'] = score
